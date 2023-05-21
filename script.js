@@ -244,14 +244,18 @@ document.querySelector(".page3-btn").addEventListener("click", function () {
 });
 document.querySelector(".page4-btn").addEventListener("click", function () {
   document.querySelector("body").style.backgroundImage = "url('back2.jpg')";
-  document.querySelector("#page1").style.transform = "translateX(-100vw)";
-  document.querySelector("#page2").style.transform = "translateX(-100vw)";
+  document.querySelector("#page1").style.transform = "translateX(-300vw)";
+  document.querySelector("#page2").style.transform = "translateX(-200vw)";
 
   document.querySelector("#page3").style.transform = "translateX(-100vw)";
-  document.querySelector("#page4").style.transform = "translateX(0vw)";
+  // document.querySelector("#page4").style.transform = "translateX(-100vw)";
 
   document.querySelector("#page1").style.width = "0vw";
   document.querySelector("#page2").style.width = "0vw";
+  document.querySelector("#page3").style.width = "0vw";
+
+
+
 
 
   document.querySelector("#page4").style.width = "100vw";
@@ -270,7 +274,7 @@ document.querySelector(".page2-btn1").addEventListener("click", function () {
   document.querySelector("#page1").style.width = "100vw";
   document.querySelector("#page2").style.width = "100vw";
 
-  document.querySelector("#page3").style.width = "0vw";
+  document.querySelector("#page3").style.width = "100vw";
   document.querySelector("#page4").style.width = "0vw";
 
 
