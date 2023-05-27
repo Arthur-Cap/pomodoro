@@ -30,11 +30,11 @@
           List</span>
         <span class="head-icon_decor">____</span>
       </div>
-      <div class="choice flex-colum page3-btn">
+      <div class="choice flex-colum">
         <ion-icon class="head-icon" name="radio-outline"></ion-icon><span class="head-icon_description">Music </span>
         <span class="head-icon_decor">____</span>
       </div>
-      <div class="choice flex-colum page4-btn">
+      <div class="choice flex-colum">
         <ion-icon class="head-icon" name="calendar-outline"></ion-icon><span class="head-icon_description"> Carlendar
         </span>
         <span class="head-icon_decor">____</span>
@@ -112,81 +112,6 @@
           </p>
 
           <div id="work-list">
-            <div class="Work open-animation" id="work1">
-              <div class="left-work-bar flex-colum">
-                <p class="task-time">8:15</p>
-                <p class="duration">Duration : 1h</p>
-                <p class="task-priority">Priority : High</p>
-              </div>
-              <div class="mid-work-bar">
-                <p class="work-description">Description</p>
-                <p class="work-detail">
-                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Pariatur aspernatur eligendi nisi eos commodi hic!
-                </p>
-              </div>
-              <button class="end-task-button flex-colum">Done</button>
-            </div>
-            <div class="Work open-animation" id="work2">
-              <div class="left-work-bar flex-colum">
-                <p class="task-time">8:15</p>
-                <p class="duration">Duration : 1h</p>
-                <p class="task-priority">Priority : High</p>
-              </div>
-              <div class="mid-work-bar">
-                <p class="work-description">Description</p>
-                <p class="work-detail">
-                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Pariatur aspernatur eligendi nisi eos commodi hic!
-                </p>
-              </div>
-              <button class="end-task-button flex-colum">Done</button>
-            </div>
-            <div class="Work open-animation" id="work3">
-              <div class="left-work-bar flex-colum">
-                <p class="task-time">8:15</p>
-                <p class="duration">Duration : 1h</p>
-                <p class="task-priority">Priority : High</p>
-              </div>
-              <div class="mid-work-bar">
-                <p class="work-description">Description</p>
-                <p class="work-detail">
-                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Pariatur aspernatur eligendi nisi eos commodi hic!
-                </p>
-              </div>
-              <button class="end-task-button flex-colum">Done</button>
-            </div>
-            <div class="Work open-animation" id="work4">
-              <div class="left-work-bar flex-colum">
-                <p class="task-time">8:15</p>
-                <p class="duration">Duration : 1h</p>
-                <p class="task-priority">Priority : High</p>
-              </div>
-              <div class="mid-work-bar">
-                <p class="work-description">Description</p>
-                <p class="work-detail">
-                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Pariatur aspernatur eligendi nisi eos commodi hic!
-                </p>
-              </div>
-              <button class="end-task-button flex-colum">Done</button>
-            </div>
-            <div class="Work open-animation" id="work5">
-              <div class="left-work-bar flex-colum">
-                <p class="task-time">8:15</p>
-                <p class="duration">Duration : 1h</p>
-                <p class="task-priority">Priority : High</p>
-              </div>
-              <div class="mid-work-bar">
-                <p class="work-description">Description</p>
-                <p class="work_detail">
-                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Pariatur aspernatur eligendi nisi eos commodi hic!
-                </p>
-              </div>
-              <button class="end-task-button flex-colum">Done</button>
-            </div>
           </div>
         </div>
       </div>
@@ -215,14 +140,6 @@
           <div id="add-task" class="flex-colum"><ion-icon id=add-task-icon name="add-circle-outline"></ion-icon> ADD
             YOUR TASK</div>
 
-          <div class="task-list task-list1">
-            <p class="task-day">02/04/2023</p>
-            <p class="task-time">8:15</p>
-            <p class="duration">Duration : 1h</p>
-            <p class="work-description">Description</p>
-            <p class="work-detail"></p>
-            <button class="task-detail">Task Detail</button>
-          </div>
 
         </div>
 
@@ -237,37 +154,37 @@
           <div class="page2-bot_body ">
 
             <div class=" task-descrip_page2 page2-input">
-              <textarea placeholder="Type here ..." maxlength="56"></textarea>
+              <textarea id="des" placeholder="Type here ..." maxlength="56"></textarea>
               <p><strong>Description</strong></p>
             </div>
 
             <div class=" task-detail_page2 page2-input">
-              <textarea placeholder="Type here ..."></textarea>
+              <textarea id="det" placeholder="Type here ..."></textarea>
               <p><strong>Detail</strong></p>
             </div>
 
             <div class=" task-duration_page2 page2-input">
               <div class="page2-bot_duration">
-                <input type="number" placeholder="Hours">h
-                <input type="number" placeholder="Minutes">m
-                <input type="number" placeholder="Seconds">s
+                <input class="time-dur" type="number" placeholder="Hours">h
+                <input class="time-dur" type="number" placeholder="Minutes">m
+                <input class="time-dur" type="number" placeholder="Seconds">s
               </div>
               <p><strong>Duration</strong></p>
             </div>
 
             <div class=" task-time_page2 page2-input">
-              <textarea placeholder="hh:mm:ss">00:00:00</textarea>
+              <textarea id="time-start" placeholder="hh:mm:ss">00:00:00</textarea>
               <p><strong>Time</strong></p>
             </div>
 
             <div class=" task-date_page2 page2-input">
-              <textarea placeholder="dd/mm/yyyy">00/00/0000</textarea>
+              <textarea id="day" placeholder="dd/mm/yyyy">00/00/0000</textarea>
               <p><strong>Day</strong></p>
             </div>
 
             <div class=" task-priority_page2 page2-input">
               <div class="task-priority_first flex-colum">
-                <input type="radio" name="task-priority">
+                <input  type="radio" name="task-priority" value="LOW">
                 <div class="task-priority_container flex-colum">
                   <span>LOW</span>
                   <ion-icon name="book"></ion-icon>
@@ -275,7 +192,7 @@
               </div>
 
               <div class="task-priority_second flex-colum">
-                <input type="radio" name="task-priority">
+                <input  type="radio" name="task-priority" value="MEDIUM">
                 <div class="task-priority_container flex-colum">
                   <span>MEDIUM</span>
                   <ion-icon name="shield"></ion-icon>
@@ -283,7 +200,7 @@
               </div>
 
               <div class="task-priority_third flex-colum">
-                <input type="radio" name="task-priority">
+                <input type="radio" name="task-priority" value="HIGH">
                 <div class="task-priority_container flex-colum">
                   <span>HIGH</span>
                   <ion-icon name="flame"></ion-icon>
@@ -302,12 +219,6 @@
 
         </div>
       </div>
-    </div>
-    <div id="page3">
-
-    </div>
-    <div id="page4">
-      
     </div>
   </div>
   <!-- End pages -->
