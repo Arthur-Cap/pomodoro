@@ -4,9 +4,6 @@
 
 html {
   overflow: hidden;
-  height: 850px;
-  width: 1067px;
-  margin: auto;
 }
 body {
   height: 87vh;
@@ -19,6 +16,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  background-size: 115%;
   background-position: 50%;
   position: fixed;
   top: 0;
@@ -85,7 +83,7 @@ body::after {
   flex-direction: column;
   width: 100vw;
   height: 190vh;
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 #page2-top {
   position: relative;
@@ -819,22 +817,3 @@ body::after {
   font-size: 0.5em;
 }
 .task-priority_container ion-icon{font-size: 2.5em;}
-#page3 {
-  display: flex;
-  flex-direction: column;
-  width: 99.9vw;
-  height: 190vh;
-  transition: all 1s ease-in-out;
-  border: 1px solid red;
-  background-color: red;
-}
-#page4 {
-  display: flex;
-  flex-direction: column;
-  width: 99.9vw;
-  height: 190vh;
-  transition: all 1s ease-in-out;
-  border: 1px solid greenyellow;
-  background-color: greenyellow;
-
-}
