@@ -307,7 +307,7 @@ function calculateTime() {
   totalSeconds = totalSeconds - reduceTime;
   }
 function relax(){
-  if(timeCount % 5 ==0){
+  if(timeCount % 10 ==0){
     timeStore = totalSeconds;
     totalSeconds = 5;
     clearInterval(changeTimePerSecond)
