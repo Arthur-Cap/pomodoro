@@ -94,7 +94,7 @@ function addTask(taskChoose) {
   if (taskDisplay == 5) {
     return;
   }
-  let small = taskList.reduce((a, b) => {
+  var small = taskList.reduce((a, b) => {
     return getTotalSec(b) > getTotalSec(a) ? a : b;
   })
   console.log(taskList)
@@ -186,6 +186,7 @@ function addTask(taskChoose) {
       else {
         taskList.splice(counting - 1, 1)
       }
+
       taskCount--;
       taskDisplay--;
       doneTask+=1;
@@ -442,6 +443,8 @@ document
     setTimeout(function () {
       document.querySelector("#page2-bot_close-btn").style.transform =
         "translateX(100px)";
+        document.querySelector(".page2-bot_done-btn").style.opacity="1"
+        clearPage2()
     }, 100);
 
     setTimeout(function () {
@@ -581,11 +584,13 @@ document
       "</p>" +
       "<p class=work_detail>" +
       document.querySelector(".task-detail_page2 textarea").value +
-      "</p>" +
+      "</p>" 
+      +
        "<button class='task-detail'>Task Detail</button>";
     newTask.style.borderBottom = "5px solid " + colorSave;
     newTask.style.textAlign = "center";
     page2Body.appendChild(newTask);
+    document.getElementsByClassName('task-detail')[newTask.id].id=newTask.id;
     showwTask()
 
     document.querySelector("#page2-bot_close-btn").style.animation = "none";
@@ -605,7 +610,6 @@ document
     setTimeout(function () { clearPage2(); }, 1500)
     addTask(0);
   });
-
 function clearPage2() {
   var duration = document.querySelectorAll(".task-duration_page2 input");
   document.querySelector(".task-time_page2 textarea").value = "00:00:00";
@@ -620,6 +624,7 @@ function clearPage2() {
     priority.checked = false;
   });
 }
+
 function showwTask(){
   var taskDetails = document.querySelectorAll(".task-detail");
 taskDetails.forEach(function (taskDetail) {
@@ -635,9 +640,39 @@ taskDetails.forEach(function (taskDetail) {
       document.querySelector("#page2-bot_close-btn").style.animation =
         "rotate1 5s linear infinite";
     }, 2000);
+    document.querySelector(".page2-bot_done-btn").style.opacity="0"
+    for(let i = 0 ; i<taskList.length ; i++){
+      for(let k = 0 ; k< taskDetails.length;k++){
+        if(taskDetails.id == taskList.id){
+          var timeTas = taskList[i].duration.split(":");
+          console.log(timeTas)
+          var hourTim = timeTas[0];
+          var minuTim = timeTas[1];
+          var secTim = timeTas[2];
+          document.getElementById('des').value = taskList[i].description;
+          document.getElementById('det').value = taskList[i].detail;
+          document.getElementsByClassName('time-dur')[0].value=hourTim
+          document.getElementsByClassName('time-dur')[1].value=minuTim
+          document.getElementsByClassName('time-dur')[2].value=secTim
+          document.getElementById('time-start').value=taskList[i].timeStart
+          document.getElementById('day').value=taskList[i].day
+          var chec = document.getElementsByName('task-priority')
+          for (let j = 0; j < chec.length; j++) {
+            if (taskList[i].priority == chec[j].value ) {
+              chec[j].checked=true;
+              break;
+            }}
+        }
+      }
+    }
   });
 });
 }
+
+
+
+
+
 
 
 
@@ -749,7 +784,7 @@ async function fetchData() {
      chillMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
      whiteNoise = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIWwgJhlT_Ts2_EOYZ0Ha-pR");
      electronicMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXSj_xUxZX95plTTi2rhRvV");
-     instrumentalMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIVgpPDZCqx41Z9nPL5eIPew");
+     instrumentalMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
      yourMusic = await getVideoIds(customeLink);
 
 
