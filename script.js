@@ -229,8 +229,8 @@ document.querySelector(".page2-btn2").addEventListener("click", function () {
 });
 
 document.querySelector(".page3-btn").addEventListener("click", function () {
-  document.querySelector("body").style.backgroundColor = "#1a1a32";
-  document.querySelector("body").style.backgroundImage = "none";
+  document.querySelector("body").style.backgroundImage =
+  "url('background.jpg')";
   document.querySelector("#page1").style.transform = "translateX(-100vw)";
   document.querySelector("#page2").style.transform = "translateX(-100vw)";
 
