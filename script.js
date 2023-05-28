@@ -421,12 +421,12 @@ document.querySelector(".ml4").addEventListener("click", function (e) {
   videoIds=instrumentalMusic;
 
 });
-var customeLink;
+
 document.querySelector(".ml5").addEventListener("click", function (e) {
   banner.style.backgroundImage = "url(mlchill.jpg)";
 
-  customeLink = prompt("Please enter your name");
-  fetchData();
+  var customeLink = prompt("Please enter your name");
+
 
   msplayer.loadVideoById(instrumentalMusic[0]);
   videoIds=instrumentalMusic;
@@ -474,20 +474,21 @@ var yourMusic;
 
 async function fetchData() {
   try {
-    yourMusic = await getVideoIds(customeLinkedIn);
      chillMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
      whiteNoise = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIWwgJhlT_Ts2_EOYZ0Ha-pR");
      electronicMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXSj_xUxZX95plTTi2rhRvV");
      instrumentalMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
-      
+    
 
-
+    // Tiếp tục xử lý dữ liệu
   } catch (error) {
     console.error(error);
   }
 }
 
 fetchData();
+
+setTimeout(console.log("ggg"+chillMusic),3000);
 
 //////////////////
 var videoIds = ["nMfPqeZjc2c","nMfPqeZjc2c"];
