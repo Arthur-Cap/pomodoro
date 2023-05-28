@@ -1151,7 +1151,13 @@ body::after {
   width: 40%;
 }
 #fix{
-  width: 30%;
+  width: 50%;
+  display: flex;
+}
+#fix p{
+  font-weight: bold ;
+  font-size: 2rem;
+  margin: 0;
 }
 .page4-content1-1 p{
   float: left;
@@ -1166,5 +1172,4 @@ body::after {
 #color3{
   color:  rgb(255, 42, 42);
 }
-
 
