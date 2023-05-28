@@ -9,12 +9,15 @@
   <link rel="stylesheet" href="style.css" />
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Dongle&family=Montserrat&family=Raleway:wght@600;700&display=swap');
   </style>
 </head>
 
 <body>
+  
   <div class="main-head">
     <div class="left-head">
       <div id="avarta"></div>
@@ -30,11 +33,11 @@
           List</span>
         <span class="head-icon_decor">____</span>
       </div>
-      <div class="choice flex-colum">
+      <div class="choice flex-colum page3-btn">
         <ion-icon class="head-icon" name="radio-outline"></ion-icon><span class="head-icon_description">Music </span>
         <span class="head-icon_decor">____</span>
       </div>
-      <div class="choice flex-colum">
+      <div class="choice flex-colum page4-btn">
         <ion-icon class="head-icon" name="calendar-outline"></ion-icon><span class="head-icon_description"> Carlendar
         </span>
         <span class="head-icon_decor">____</span>
@@ -112,6 +115,81 @@
           </p>
 
           <div id="work-list">
+            <div class="Work open-animation" id="work1">
+              <div class="left-work-bar flex-colum">
+                <p class="task-time">8:15</p>
+                <p class="duration">Duration : 1h</p>
+                <p class="task-priority">Priority : High</p>
+              </div>
+              <div class="mid-work-bar">
+                <p class="work-description">Description</p>
+                <p class="work-detail">
+                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Pariatur aspernatur eligendi nisi eos commodi hic!
+                </p>
+              </div>
+              <button class="end-task-button flex-colum">Done</button>
+            </div>
+            <div class="Work open-animation" id="work2">
+              <div class="left-work-bar flex-colum">
+                <p class="task-time">8:15</p>
+                <p class="duration">Duration : 1h</p>
+                <p class="task-priority">Priority : High</p>
+              </div>
+              <div class="mid-work-bar">
+                <p class="work-description">Description</p>
+                <p class="work-detail">
+                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Pariatur aspernatur eligendi nisi eos commodi hic!
+                </p>
+              </div>
+              <button class="end-task-button flex-colum">Done</button>
+            </div>
+            <div class="Work open-animation" id="work3">
+              <div class="left-work-bar flex-colum">
+                <p class="task-time">8:15</p>
+                <p class="duration">Duration : 1h</p>
+                <p class="task-priority">Priority : High</p>
+              </div>
+              <div class="mid-work-bar">
+                <p class="work-description">Description</p>
+                <p class="work-detail">
+                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Pariatur aspernatur eligendi nisi eos commodi hic!
+                </p>
+              </div>
+              <button class="end-task-button flex-colum">Done</button>
+            </div>
+            <div class="Work open-animation" id="work4">
+              <div class="left-work-bar flex-colum">
+                <p class="task-time">8:15</p>
+                <p class="duration">Duration : 1h</p>
+                <p class="task-priority">Priority : High</p>
+              </div>
+              <div class="mid-work-bar">
+                <p class="work-description">Description</p>
+                <p class="work-detail">
+                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Pariatur aspernatur eligendi nisi eos commodi hic!
+                </p>
+              </div>
+              <button class="end-task-button flex-colum">Done</button>
+            </div>
+            <div class="Work open-animation" id="work5">
+              <div class="left-work-bar flex-colum">
+                <p class="task-time">8:15</p>
+                <p class="duration">Duration : 1h</p>
+                <p class="task-priority">Priority : High</p>
+              </div>
+              <div class="mid-work-bar">
+                <p class="work-description">Description</p>
+                <p class="work_detail">
+                  Detai Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Pariatur aspernatur eligendi nisi eos commodi hic!
+                </p>
+              </div>
+              <button class="end-task-button flex-colum">Done</button>
+            </div>
           </div>
         </div>
       </div>
@@ -140,6 +218,14 @@
           <div id="add-task" class="flex-colum"><ion-icon id=add-task-icon name="add-circle-outline"></ion-icon> ADD
             YOUR TASK</div>
 
+          <div class="task-list task-list1">
+            <p class="task-day">02/04/2023</p>
+            <p class="task-time">8:15</p>
+            <p class="duration">Duration : 1h</p>
+            <p class="work-description">Description</p>
+            <p class="work-detail"></p>
+            <button class="task-detail">Task Detail</button>
+          </div>
 
         </div>
 
@@ -154,37 +240,37 @@
           <div class="page2-bot_body ">
 
             <div class=" task-descrip_page2 page2-input">
-              <textarea id="des" placeholder="Type here ..." maxlength="56"></textarea>
+              <textarea placeholder="Type here ..." maxlength="56"></textarea>
               <p><strong>Description</strong></p>
             </div>
 
             <div class=" task-detail_page2 page2-input">
-              <textarea id="det" placeholder="Type here ..."></textarea>
+              <textarea placeholder="Type here ..."></textarea>
               <p><strong>Detail</strong></p>
             </div>
 
             <div class=" task-duration_page2 page2-input">
               <div class="page2-bot_duration">
-                <input class="time-dur" type="number" placeholder="Hours">h
-                <input class="time-dur" type="number" placeholder="Minutes">m
-                <input class="time-dur" type="number" placeholder="Seconds">s
+                <input type="number" placeholder="Hours">h
+                <input type="number" placeholder="Minutes">m
+                <input type="number" placeholder="Seconds">s
               </div>
               <p><strong>Duration</strong></p>
             </div>
 
             <div class=" task-time_page2 page2-input">
-              <textarea id="time-start" placeholder="hh:mm:ss">00:00:00</textarea>
+              <textarea placeholder="hh:mm:ss">00:00:00</textarea>
               <p><strong>Time</strong></p>
             </div>
 
             <div class=" task-date_page2 page2-input">
-              <textarea id="day" placeholder="dd/mm/yyyy">00/00/0000</textarea>
+              <textarea placeholder="dd/mm/yyyy">00/00/0000</textarea>
               <p><strong>Day</strong></p>
             </div>
 
             <div class=" task-priority_page2 page2-input">
               <div class="task-priority_first flex-colum">
-                <input  type="radio" name="task-priority" value="LOW">
+                <input type="radio" name="task-priority">
                 <div class="task-priority_container flex-colum">
                   <span>LOW</span>
                   <ion-icon name="book"></ion-icon>
@@ -192,7 +278,7 @@
               </div>
 
               <div class="task-priority_second flex-colum">
-                <input  type="radio" name="task-priority" value="MEDIUM">
+                <input type="radio" name="task-priority">
                 <div class="task-priority_container flex-colum">
                   <span>MEDIUM</span>
                   <ion-icon name="shield"></ion-icon>
@@ -200,7 +286,7 @@
               </div>
 
               <div class="task-priority_third flex-colum">
-                <input type="radio" name="task-priority" value="HIGH">
+                <input type="radio" name="task-priority">
                 <div class="task-priority_container flex-colum">
                   <span>HIGH</span>
                   <ion-icon name="flame"></ion-icon>
@@ -220,10 +306,73 @@
         </div>
       </div>
     </div>
+    <div id="page3">
+      <div class="page3-head">
+        <p class="music"><strong>Music</strong></p>
+        <span>RECOMEND LIST</span>
+        <p class="musicdes">There is a relationship between music and focus. Music can offer a resource for emotion regulation and help people achieve various goals such as maintaining focus on a task and reducing boredom 1. Music can also improve cognitive performance, reduce stress, and improve mood, all of which can contribute to better focus </p>
+      </div>
+      <div class="page3-body">
+        <div class="music-list ml1">
+          <div class="mld mld1">
+            <p> WHITE NOISE </p>
+          </div>
+        </div>
+        <div class="music-list ml2">
+          <div class="mld mld2">
+            <p> ELECTRONIC MUSIC </p>
+          </div>
+        </div>
+        <div class="music-list ml3">
+          <div class="mld mld3">
+            <p> CHILL MUSIC </p>
+          </div>
+        </div>
+        <div class="music-list ml4">
+          <div class="mld mld4">
+            <p> INSTRUMENTAL </p>
+          </div>
+        </div>
+        <div id="ms-player"></div>
+        <div class="music-list ml5">
+          <div class="mld mld5">
+            <p> SELF - CREATE </p>
+          </div>
+        </div>
+      </div>
+      <div class="popup-page3">
+        
+        <div class="popup_left-side">
+            <div class="banner">
+
+            </div>
+            <div class="music-controller-cover">
+             <div class="music-controller">
+              <ion-icon name="play-skip-back-circle-outline"></ion-icon>
+              <ion-icon name="shuffle-outline"></ion-icon>
+              <ion-icon class="play-mid" id="play-ms-Button" name="play-circle-outline"></ion-icon>
+              <ion-icon name="repeat-outline"></ion-icon>
+              <ion-icon name="play-skip-forward-circle-outline"></ion-icon>
+             </div>
+            </div>
+        </div>
+        
+        <div class="popup_right-side">
+          <div id="ms-player"></div>
+
+        </div>
+      </div>
+      
+      <div class="blur-ms"></div>
+    </div>
+    <div id="page4">
+
+    </div>
   </div>
   <!-- End pages -->
   </div>
-
+  
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script src="script.js"></script>
 </body>
 
