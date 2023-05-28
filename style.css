@@ -1,9 +1,13 @@
 :root {
   --basecolor: rgba(166, 153, 153, 0.248);
+  --page3-color: red;
 }
 
 html {
   overflow: hidden;
+  height: 850px;
+  width: 1067px;
+  margin: auto;
 }
 body {
   height: 87vh;
@@ -16,7 +20,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  background-size: 115%;
   background-position: 50%;
   position: fixed;
   top: 0;
@@ -74,18 +77,21 @@ body::after {
   height: 100%;
 }
 #page1 {
-  /* display: NONE; */
+  display: none ;
   transition: all 1s ease-in-out;
   width: 100vw;
 }
 #page2 {
+  display: none;
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 190vh;
-  transition: all 0.5s ease-in-out;
+  transition: all 1s ease-in-out;
+  width: 0;
 }
 #page2-top {
+  display: none;
   position: relative;
   top: -2vh;
   height: 85vh;
@@ -93,6 +99,7 @@ body::after {
   transition: all 1s ease-out;
 }
 #page2-bot {
+display: none;
   height: 85vh;
   width: 99.9vw;
   margin-top: 20vh;
@@ -817,3 +824,258 @@ body::after {
   font-size: 0.5em;
 }
 .task-priority_container ion-icon{font-size: 2.5em;}
+#page3 {
+  display: flex;
+  flex-direction: column;
+  width: 99.9vw;
+  height: 190vh;
+  transition: all 1s ease-in-out;
+  align-items: center;
+
+}
+#page4 {
+  display: flex;
+  flex-direction: column;
+  width: 99.9vw;
+  height: 190vh;
+  transition: all 1s ease-in-out;
+
+}
+.page3-head{
+  width: 90vw;
+}
+.page3-head span{
+  color: #ffffff;
+  margin: 0;
+  font-size: 3rem;
+  border-bottom: solid 2px var(--page3-color);
+  font-weight: bold !important;
+}
+.page3-head .music{
+  color: var(--page3-color) ;
+  font-size: 1.5rem;
+  margin: 20px 0px  0 ;
+}
+.musicdes{
+  color: #ffffff;
+  font-size: 0.7rem;
+  width: 50vw;
+  margin: 0;
+  margin-top: 20px;
+  background-color: rgba(255, 0, 0, 0.345);
+  border-radius: 5px;
+  padding: 10px;
+}
+.page3-body{
+  display: flex;
+  width: 90vw;
+  height: 60vh;
+  /* border: solid 1px white; */
+  margin-top: 2vh;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.music-list{
+  border: 3px solid var(--page3-color);
+  width: 16vw;
+  height: 45vh;
+  border-radius: 3%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column-reverse;
+  transition: all 3s ease;
+  }
+.ml1{
+  background-image: url(mlchill.jpg);
+  background-repeat: none;
+  background-size: cover;
+  background-position: bottom ;
+}
+.ml2{
+  background-image: url(elecMus.jpg);
+  background-repeat: none;
+  background-size: cover;
+  background-position: center  ;
+}
+.ml3{
+  background-image: url(lightms.jpg);
+  background-repeat: none;
+  background-size: cover;
+  background-position: center  ;
+}
+.ml4{
+  background-image: url(novoice.jpg);
+  background-repeat: none;
+  background-size: cover;
+  background-position: center  ;
+}
+.mld{
+  background-image: linear-gradient(to top, var(--page3-color), rgba(255, 0, 0, 0.263),rgba(255, 255, 255, 0),rgba(255, 255, 255, 0));
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.mld p{
+  text-align: center;
+  position: absolute;
+  min-width: 45%;;
+  bottom: 10px;
+  color: #ffffff;
+  font-size: 0.8rem;
+  border: solid 1px white;
+  padding: 10px;
+  margin: 0;
+  border-radius: 5px;
+  transition: all 0.1s ease-in;
+}
+.music-list:hover p{
+  transform: scale(110%);
+}
+.music-list:hover .mld {
+  transition: all 0.3s ease-out;
+  box-shadow: red 1px 1px 35px 1px;
+}
+.music-list:hover{
+  background-position: 15% ;
+}
+.popup-page3{
+
+  position: fixed;
+  width: 73vw;
+  height: 73vh;
+  background-color: rgb(4, 0, 51);
+  margin: 0;
+  z-index: 1001;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap:wrap;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  transform: scaleY(0);
+  transition: all 0.2s ease-in-out;
+}
+.popup_left-side{
+  position: relative;
+  height: 65vh;
+  width: 49%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+.banner{
+  width: 99%;
+  height: 70%;
+  border: solid 1px rgba(255, 255, 255, 0.442);
+  background-image: url(lightms.jpg);
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+}
+.music-controller-cover{
+  width: 100%;
+  height: 25%;
+  background-color: rgba(254, 254, 254, 0.258);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.music-controller{
+  width: 90%;
+  height: 70%;
+  background-color: rgba(254, 254, 254, 0.258);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.music-controller ion-icon{
+  font-size: 2rem;
+  color: aliceblue;
+}
+.music-controller .play-mid{
+  font-size: 3rem;
+}
+.popup_right-side{
+  height: 65vh;
+  width: 49%;
+  border-radius: 10px;
+  background-color: rgba(254, 254, 254, 0.258);
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  transition: all 0.5s ease;
+  position: relative;
+}
+.popup_right-side::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background-color: transparent;
+}
+
+.ms{
+  width: 100%;
+  height: 15%;
+  background-color: #ffffff51;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+.ms-number{
+  width: 15%;
+  height: 100%;
+  background-color: #ffffff32;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  border-radius: 10px;
+}
+.ms-detail{
+  min-height: 60%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ms-detail span{
+  color: #ffffff;
+  font-weight: bold;
+  width: 45vh;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ms-detail p{
+  color: #ffffff;
+  font-size: 0.7rem;
+  margin: 0;
+}
+.ms ion-icon{
+  position: absolute;
+  right: 5%;
+  color: rgb(255, 157, 174) ;
+  font-size: 2rem;
+}
+.blur-ms{
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(0px);
+  position: fixed;
+  top:0;
+  z-index: 1000;
+  transform: scale(0);
+  transition: all 0.1 ease-in-out;
+}
