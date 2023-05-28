@@ -699,7 +699,7 @@ async function fetchData() {
      chillMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
      whiteNoise = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIWwgJhlT_Ts2_EOYZ0Ha-pR");
      electronicMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXSj_xUxZX95plTTi2rhRvV");
-     instrumentalMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
+     instrumentalMusic = await getVideoIds("https://www.youtube.com/playlist?list=PLnAH_52EwoIVgpPDZCqx41Z9nPL5eIPew");
 
 
     // Tiếp tục xử lý dữ liệu
