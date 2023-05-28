@@ -1,160 +1,3 @@
-var taskList = [];
-var idCount = 0;
-var taskCount = 0;
-var taskDisplay = 0;
-var adding = 0;
-function task(description, duration, priority, detail, timeStart, day, id) {
-  this.description = description;
-  this.duration = duration;
-  this.priority = priority;
-  this.detail = detail;
-  this.timeStart = timeStart;
-  this.day = day;
-  this.id = id;
-}
-function getTask() {
-  idCount += 1;
-  a = new task();
-  a.id = idCount;
-  a.description = document.getElementById('des').value;
-  a.detail = document.getElementById('det').value;
-  var time = document.getElementsByClassName('time-dur');
-  time[0].value.length < 2 ? time[0].value = '0' + time[0].value : time[0].value = time[0].value;
-  time[1].value.length < 2 ? time[1].value = '0' + time[1].value : time[1].value = time[1].value;
-  time[2].value.length < 2 ? time[2].value = '0' + time[2].value : time[2].value = time[2].value;
-  a.duration = time[0].value + ':' + time[1].value + ':' + time[2].value;
-  a.timeStart = document.getElementById('time-start').value;
-  a.day = document.getElementById('day').value;
-  var check = document.getElementsByName('task-priority')
-  for (let i = 0; i < check.length; i++) {
-    if (check[i].checked) {
-      a.priority = check[i].value;
-      break;
-    }
-  }
-  taskList.push(a)
-
-  return;
-
-}
-function getTotalSec(obj) {
-  var timeTask = obj.timeStart.split(":");
-  var hourTime = timeTask[0];
-  var minuTime = timeTask[1];
-  var secTime = timeTask[2];
-  return hourTime * 60 * 60 + minuTime * 60 + parseInt(secTime);
-}
-
-function addTask(taskChoose) {
-  if (taskDisplay == 5) {
-    return;
-  }
-  let small = taskList.reduce((a, b) => {
-    return getTotalSec(b) > getTotalSec(a) ? a : b;
-  })
-  if (taskChoose == 0) {
-    var choose = taskList[taskCount]
-    var counting = taskCount;
-  } else {
-    if (taskList.length == 4) {
-      return;
-    }
-    var choose = taskList[4]
-    var counting = taskCount + adding -1; 
-  }
-
-  const div1 = document.createElement('div');
-  div1.className = "Work open-animation";
-  div1.style.transform = "scale(1, 1)";
-  div1.style.transition = "all 0.2s ease-out 0s";
-  div1.id = "work" + taskCount;
-  if (getTotalSec(choose) == getTotalSec(small)) {
-    let getSmallId = "work" + small.id;
-    document.getElementById('work-list').prepend(div1)
-  } else {
-    if (taskList.length == 0) {
-      document.getElementById('work-list').appendChild(div1)
-    } else {
-      let flag = 0;
-      for (let i = 0; i < taskList.length; i++) {
-        let getId = taskList[i].id - 1;
-        let riuID = "work" + getId;
-        if (i > 0) {
-          getId = taskList[i - 1].id;
-          riuID = "work" + getId;
-        }
-        if (getTotalSec(choose) < getTotalSec(taskList[i])) {
-          document.getElementById('work-list').insertBefore(div1, document.getElementById(riuID))
-          flag = 1;
-        }
-      }
-      if (flag == 0) {
-        document.getElementById('work-list').appendChild(div1)
-      }
-    }
-  }
-  const div2 = document.createElement('div');
-  div2.classList.add('left-work-bar', 'flex-colum');
-  var p1 = document.createElement('p');
-  p1.innerHTML = choose.timeStart;
-  p1.className = "task-time";
-  var p2 = document.createElement('p');
-  p2.innerHTML = "Duration : " + choose.duration;
-  p2.className = "duration";
-  var p3 = document.createElement('p');
-  p3.innerHTML = "Priority : " + choose.priority;
-  p3.className = "task-priority";
-  div2.appendChild(p1)
-  div2.appendChild(p2)
-  div2.appendChild(p3)
-  div1.appendChild(div2);
-  var div3 = document.createElement('div');
-  div3.className = "mid-work-bar";
-  var p4 = document.createElement('p');
-  p4.innerHTML = choose.description;
-  p4.className = "work-description";
-  var p5 = document.createElement('p')
-  p5.innerHTML = choose.detail;
-  p5.className = "work-detail"
-  div3.appendChild(p4)
-  div3.appendChild(p5)
-  div1.appendChild(div3)
-  var buton = document.createElement('button')
-  buton.innerHTML = "Done";
-  buton.className = "end-task-button flex-colum";
-  buton.addEventListener('click', function () {
-    div1.style.transform = "scale(1,0)";
-    div1.style.transition = "all 0.2s ease-out";
-    setTimeout(function () {
-
-      // if(counting >=5){
-      //   alert("okkk")
-      //   adding+=1;
-      // }
-      div1.remove();
-      document.getElementById(counting).remove()
-      let coutingRemove = counting - adding
-      if (counting > 5) { taskList.splice(coutingRemove - 1, 1) }
-      else {
-        taskList.splice(counting - 1, 1)
-      }
-      taskCount--;
-      taskDisplay--;
-
-      if (taskDisplay == 4 && taskList.length > 4) {
-        // adding+=1;
-        addTask(1)
-
-        adding += 1;
-      }
-    }, 400);
-  })
-  div1.appendChild(buton);
-
-  taskCount += 1;
-  taskDisplay++;
-}
-
 function displayTime() {
   var date = new Date();
   var hours = date.getHours();
@@ -210,6 +53,7 @@ var tasks = document.querySelectorAll(".end-task-button");
 
 tasks.forEach((element) => {
   element.addEventListener("click", function () {
+    console.log(element.parentNode.id);
     removene("#" + element.parentNode.id);
   });
 });
@@ -223,10 +67,6 @@ var totalSeconds;
 var reduceTime = 1;
 var permanentSecond;
 var changeTimePerSecond;
-var timeStore=0;
-var timeCount=0;
-var restTime;
-var storeTimeCount=0;
 function formatTime() {
   timeParts = time.split(":");
   hoursInSeconds = parseInt(timeParts[0]) * 3600;
@@ -249,10 +89,7 @@ function calculateTime() {
   document.querySelector("#clock").style.strokeDashoffset =
     879 - (totalSeconds / permanentSecond) * 879;
   totalSeconds = totalSeconds - reduceTime;
-  console.log("timecount: " +timeCount)
-  console.log("totalsec: " +totalSeconds)
-  }
-
+}
 
 function runtime() {
   changeTimePerSecond = setInterval(function () {
@@ -260,7 +97,6 @@ function runtime() {
       clearInterval(changeTimePerSecond);
     }
     calculateTime();
-    timeCount+=1;
   }, 1000);
 }
 runtime();
@@ -343,6 +179,7 @@ document.querySelector("#submit-time").addEventListener("click", function (e) {
   var minutesValue = document.querySelector("#minutes-field").value;
   var secondsValue = document.querySelector("#seconds-field").value;
   time = hoursValue + ":" + minutesValue + ":" + secondsValue;
+  console.log(time);
   formatTime();
   calculateTime();
 });
@@ -384,13 +221,53 @@ document.querySelector(".page2-btn2").addEventListener("click", function () {
   document.querySelector("body").style.backgroundImage = "url('back2.jpg')";
   document.querySelector("#page1").style.transform = "translateX(-100vw)";
   document.querySelector("#page1").style.width = "0vw";
+  document.querySelector("#page2").style.width = "100vw";
+  document.querySelector("#page3").style.width = "100vw";
+
+  document.querySelector("#page2").style.transform = "translateX(00vw)";
+  document.querySelector("#page3").style.transform = "translateX(00vw)";
 });
 
+document.querySelector(".page3-btn").addEventListener("click", function () {
+  document.querySelector("body").style.backgroundColor = "#1a1a32";
+  document.querySelector("body").style.backgroundImage = "none";
+  document.querySelector("#page1").style.transform = "translateX(-100vw)";
+  document.querySelector("#page2").style.transform = "translateX(-100vw)";
+
+  document.querySelector("#page3").style.transform = "translateX(0vw)";
+  document.querySelector("#page4").style.transform = "translateX(0vw)";
+
+  document.querySelector("#page1").style.width = "0vw";
+  document.querySelector("#page2").style.width = "0vw";
+  document.querySelector("#page3").style.width = "99.9vw";
+});
+document.querySelector(".page4-btn").addEventListener("click", function () {
+  document.querySelector("body").style.backgroundImage = "url('back2.jpg')";
+  document.querySelector("#page1").style.transform = "translateX(-300vw)";
+  document.querySelector("#page2").style.transform = "translateX(-200vw)";
+
+  document.querySelector("#page3").style.transform = "translateX(-100vw)";
+  // document.querySelector("#page4").style.transform = "translateX(-100vw)";
+
+  document.querySelector("#page1").style.width = "0vw";
+  document.querySelector("#page2").style.width = "0vw";
+  document.querySelector("#page3").style.width = "0vw";
+
+  document.querySelector("#page4").style.width = "100vw";
+});
 document.querySelector(".page2-btn1").addEventListener("click", function () {
   document.querySelector("body").style.backgroundImage =
     "url('background.jpg')";
-  document.querySelector("#page1").style.transform = "translateX(00vw)";
+  document.querySelector("#page2").style.transform = "translateX(0vw)";
+  document.querySelector("#page1").style.transform = "translateX(0vw)";
+  document.querySelector("#page3").style.transform = "translateX(0vw)";
+  document.querySelector("#page4").style.transform = "translateX(0vw)";
+
   document.querySelector("#page1").style.width = "100vw";
+  document.querySelector("#page2").style.width = "100vw";
+
+  document.querySelector("#page3").style.width = "100vw";
+  document.querySelector("#page4").style.width = "0vw";
 });
 
 var priorities = document.querySelectorAll(".task-priority_page2 input");
@@ -398,7 +275,8 @@ var priorities = document.querySelectorAll(".task-priority_page2 input");
 var colorSave = null;
 
 priorities[0].addEventListener("click", function () {
-  priorities[0].parentNode.parentNode.style.border = "3px solid rgb(13, 255, 0)";
+  priorities[0].parentNode.parentNode.style.border =
+    "3px solid rgb(13, 255, 0)";
   colorSave = "rgb(13, 255, 0)";
 });
 
@@ -417,14 +295,7 @@ var page2Body = document.querySelector("#task_body");
 document
   .querySelector(".page2-bot_done-btn")
   .addEventListener("click", function () {
-    getTask();
     var newTask = document.createElement("div");
-    newTask.id = taskCount;
-    if (taskList.length > 6) {
-      adding += 1;
-      newTask.id = taskCount + adding;
-    }
-
     newTask.classList.add(
       "task-list",
       "task-list" + page2Body.childElementCount + 1
@@ -453,8 +324,10 @@ document
       "</p>" +
       "<button class='task-detail'>Task Detail</button>";
 
+    console.log("5px solid " + colorSave);
     newTask.style.borderBottom = "5px solid " + colorSave;
     newTask.style.textAlign = "center";
+    console.log(newTask);
     page2Body.appendChild(newTask);
 
     document.querySelector("#page2-bot_close-btn").style.animation = "none";
@@ -471,8 +344,9 @@ document
     setTimeout(function () {
       document.querySelector("#page2-bot").style.marginTop = "20vh";
     }, 1700);
-    setTimeout(function () { clearPage2(); }, 1500)
-    addTask(0);
+    setTimeout(function () {
+      clearPage2();
+    }, 1500);
   });
 
 function clearPage2() {
@@ -489,3 +363,251 @@ function clearPage2() {
     priority.checked = false;
   });
 }
+
+var popupPage3 = document.querySelectorAll(".popup-page3");
+var popupblur = document.querySelector(".blur-ms");
+
+var musicList = document.querySelectorAll(".music-list");
+musicList.forEach(function (element) {
+  element.addEventListener("click", function (e) {
+    popupPage3.forEach(function (element) {
+      element.style.display = "flex";
+      element.style.transform = "scaleY(1)";
+
+    });
+    popupblur.style.backdropFilter = "blur(5px)";
+    popupblur.style.transform = "scaleY(1)";
+
+  });
+});
+
+
+popupblur.addEventListener("click", function (e) {
+  popupPage3.forEach(function (element) {
+    element.style.transform = "scaleY(0)";
+
+  });
+  popupblur.style.backdropFilter = "blur(0)";
+  popupblur.style.transform = "scaleY(0)";
+  document.querySelector(".popup_right-side").innerHTML ="";
+});
+
+var banner = document.querySelector(".banner");
+document.querySelector(".ml1").addEventListener("click", function (e) {
+  banner.style.backgroundImage = "url(mlchill.jpg)";
+  getVideosDetails(whiteNoise);
+  msplayer.loadVideoById(whiteNoise[0]);
+  videoIds=whiteNoise.getVideoIds();
+});
+
+document.querySelector(".ml2").addEventListener("click", function (e) {
+  banner.style.backgroundImage = "url(elecMus.jpg)";
+  getVideosDetails(electronicMusic);
+  msplayer.loadVideoById(electronicMusic[0]);
+  videoIds=electronicMusic.getVideoIds();
+});
+
+document.querySelector(".ml3").addEventListener("click", function (e) {
+  banner.style.backgroundImage = "url(lightms.jpg)";
+  getVideosDetails(chillMusic);
+  msplayer.loadVideoById(chillMusic[0]);
+  videoIds=chillMusic;
+});
+
+document.querySelector(".ml4").addEventListener("click", function (e) {
+  banner.style.backgroundImage = "url(novoice.jpg)";
+  getVideosDetails(instrumentalMusic);
+  msplayer.loadVideoById(instrumentalMusic[0]);
+  videoIds=instrumentalMusic;
+
+});
+var customeLink;
+document.querySelector(".ml5").addEventListener("click", function (e) {
+  banner.style.backgroundImage = "url(mlchill.jpg)";
+
+  customeLink = prompt("Please enter your name");
+  fetchData();
+
+  msplayer.loadVideoById(instrumentalMusic[0]);
+  videoIds=instrumentalMusic;
+});
+
+var msplayer;
+
+
+async function getVideoIds(linkPL) {
+  return new Promise((resolve, reject) => {
+    var playlistId = extractPlaylistId(linkPL);
+    if (playlistId) {
+      var apiKey = 'AIzaSyD5CLYGTJlmIPvuPR3p5NoZQlxUyzOlspY';
+      var url = `https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId=${playlistId}&key=${apiKey}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          var idList = data.items.map(item => item.contentDetails.videoId);
+          resolve(idList);
+        })
+        .catch(error => {
+          reject(error);
+        });
+    } else {
+      reject(new Error('Liên kết playlist không hợp lệ'));
+    }
+  });
+}
+
+function extractPlaylistId(playlistLink) {
+  var regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/playlist\?list=|https?:\/\/(?:www\.)?youtu\.be\/)([a-zA-Z0-9_-]{10,})/;
+  var match = playlistLink.match(regex);
+  if (match && match.length > 1) {
+    return match[1];
+  }
+  return null;
+}
+
+var chillMusic ;
+var whiteNoise;
+var electronicMusic;
+var instrumentalMusic ;
+var yourMusic;
+
+async function fetchData() {
+  try {
+    yourMusic = await getVideoIds(customeLinkedIn);
+     chillMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
+     whiteNoise = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIWwgJhlT_Ts2_EOYZ0Ha-pR");
+     electronicMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXSj_xUxZX95plTTi2rhRvV");
+     instrumentalMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
+      
+
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+fetchData();
+
+//////////////////
+var videoIds = ["nMfPqeZjc2c","nMfPqeZjc2c"];
+var apiKey = "AIzaSyD5CLYGTJlmIPvuPR3p5NoZQlxUyzOlspY";
+
+function onYouTubeIframeAPIReady() {
+  msplayer = new YT.Player('ms-player', {
+    height: '00px',
+    width: '00px',
+    videoId: videoIds[0],
+    playerVars: {
+      'playsinline': 1,
+      'mute' :0,
+      'defaultPlaybackQuality': 'small'
+    },
+    events: {
+      'onStateChange': onPlayerStateChange
+    }
+  });
+
+  var playButton = document.getElementById('play-ms-Button');
+  playButton.addEventListener('click', playVideo);
+}
+
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.ENDED) {
+    nextSong();
+    
+  }
+}
+
+function nextSong(){
+  var currentIndex = videoIds.indexOf(msplayer.getVideoData().video_id);
+    var nextIndex = (currentIndex + 1) % videoIds.length;
+    var nextVideoId = videoIds[nextIndex];
+    msplayer.loadVideoById(nextVideoId);
+}
+function playVideo() {
+  msplayer.playVideo();
+}
+
+
+
+//////////////
+function loadClient() {
+  return gapi.client
+    .init({
+      apiKey: apiKey,
+    })
+    .then(function () {
+      console.log("API loaded successfully");
+      return gapi.client.load(
+        "https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"
+      );
+    })
+    .then(function () {
+      console.log("Client loaded successfully");
+      getVideosDetails([]);
+    })
+    .catch(function (err) {
+      console.error("Error loading client", err);
+    });
+}
+
+function createVideoElement(index, title, channelTitle) {
+  var msDiv = document.createElement("div");
+  msDiv.className = "ms";
+
+  var hiddenVid = document.createElement("div");
+  hiddenVid.id="ms-player";
+
+  var msNumberDiv = document.createElement("div");
+  msNumberDiv.className = "ms-number";
+  var h1 = document.createElement("h1");
+  h1.textContent = index;
+  msNumberDiv.appendChild(h1);
+
+  var msDetailDiv = document.createElement("div");
+  msDetailDiv.className = "ms-detail";
+  var span = document.createElement("span");
+  span.textContent = title;
+  var p = document.createElement("p");
+  p.textContent = channelTitle;
+  msDetailDiv.appendChild(span);
+  msDetailDiv.appendChild(p);
+
+  var ionIcon = document.createElement("ion-icon");
+  ionIcon.setAttribute("name", "heart-circle-outline");
+
+  msDiv.appendChild(hiddenVid);
+  msDiv.appendChild(msNumberDiv);
+  msDiv.appendChild(msDetailDiv);
+  msDiv.appendChild(ionIcon);
+
+  var popupRightSide = document.querySelector(".popup_right-side");
+  popupRightSide.appendChild(msDiv);
+}
+
+///
+
+async function getVideosDetails(videoIDs) {
+  for (var i = 0; i < videoIDs.length; i++) {
+    try {
+      var response = await gapi.client.youtube.videos.list({
+        part: "snippet",
+        id: videoIDs[i],
+      });
+  console.log(videoIDs+'g');
+
+      var title = response.result.items[0].snippet.title;
+      var channelTitle = response.result.items[0].snippet.channelTitle;
+
+      createVideoElement(i, title, channelTitle);
+    } catch (err) {
+      console.error("Execute error", err);
+    }
+  }
+}
+
+gapi.load("client", loadClient);
+//////////////////////////////////////
+
+
