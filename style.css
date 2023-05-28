@@ -734,6 +734,7 @@ body::after {
   position: relative;
   left: 100px;
 }
+
 .task-time_page2 textarea {
   font-size: 8em;
   text-align: center;
@@ -1158,6 +1159,7 @@ body::after {
   font-weight: bold ;
   font-size: 2rem;
   margin: 0;
+  margin-right: 2%;
 }
 .page4-content1-1 p{
   float: left;
@@ -1172,4 +1174,6 @@ body::after {
 #color3{
   color:  rgb(255, 42, 42);
 }
-
+#heading-det{
+  font-size: 20px;
+}
