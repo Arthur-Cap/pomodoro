@@ -787,8 +787,8 @@ var videoIds = ["nMfPqeZjc2c", "nMfPqeZjc2c"];
 var apiKey = "AIzaSyD5CLYGTJlmIPvuPR3p5NoZQlxUyzOlspY";
 function onYouTubeIframeAPIReady() {
   msplayer = new YT.Player("ms-player", {
-    height: "300px",
-    width: "300px",
+    height: "0px",
+    width: "0px",
     videoId: videoIds[0],
     playerVars: {
       playsinline: 1,
