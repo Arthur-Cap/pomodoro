@@ -688,12 +688,23 @@ document.querySelector(".ml4").addEventListener("click", function (e) {
   videoIds=instrumentalMusic;
 
 });
-
+var customeLink;
+var firstTime = 1;
 document.querySelector(".ml5").addEventListener("click", function (e) {
   banner.style.backgroundImage = "url(mlchill.jpg)";
 
-  var customeLink = prompt("Please enter your name");
+  if(firstTime==1){
+    customeLink = prompt("Please enter your link");
+  fetchData();
+  firstTime = 0;
 
+  setTimeout(function () {
+    getVideosDetails(yourMusic);
+  msplayer.loadVideoById(yourMusic[0]);
+  videoIds=yourMusic;
+  },1000);
+  }
+  getVideosDetails(yourMusic);
 
   msplayer.loadVideoById(instrumentalMusic[0]);
   videoIds=instrumentalMusic;
@@ -738,7 +749,8 @@ async function fetchData() {
      chillMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
      whiteNoise = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIWwgJhlT_Ts2_EOYZ0Ha-pR");
      electronicMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXSj_xUxZX95plTTi2rhRvV");
-     instrumentalMusic = await getVideoIds("https://www.youtube.com/playlist?list=PLnAH_52EwoIVgpPDZCqx41Z9nPL5eIPew");
+     instrumentalMusic = await getVideoIds("https://youtube.com/playlist?list=PLnAH_52EwoIXQ2ZAFNM2YHBUkvhic0Dfb");
+     yourMusic = await getVideoIds(customeLink);
 
 
     // Tiếp tục xử lý dữ liệu
@@ -748,8 +760,6 @@ async function fetchData() {
 }
 
 fetchData();
-
-setTimeout(console.log("ggg"+chillMusic),3000);
 
 //////////////////
 var videoIds = ["nMfPqeZjc2c","nMfPqeZjc2c"];
